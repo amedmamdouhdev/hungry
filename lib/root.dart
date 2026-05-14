@@ -19,21 +19,29 @@ class _RootState extends State<Root> {
   int currentScreen = 0;
   @override
   void initState() {
-    screens = [HomeView(), CardView(),OrderDeteils(), ProfileView()];
-    controller = PageController(initialPage: currentScreen);
     super.initState();
+    screens = [HomeView(), CardView(), OrderDeteils(), ProfileView()];
+    controller = PageController(initialPage: currentScreen);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(controller: controller),
+      body: PageView(
+        controller: controller,
+        onPageChanged: (value) {
+          setState(() {
+            currentScreen = value;
+          });
+        },
+        children: screens,
+      ),
 
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: AppColor.primryColor,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
         child: BottomNavigationBar(
           elevation: 0,
@@ -43,9 +51,18 @@ class _RootState extends State<Root> {
           unselectedItemColor: Colors.grey,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: 'card'),
-            BottomNavigationBarItem(icon: Icon(Icons.local_restaurant_sharp), label: 'Order detiels'),
-            BottomNavigationBarItem(icon: Icon(CupertinoIcons.profile_circled), label: 'profile'),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.cart),
+              label: 'Card',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.local_restaurant_sharp),
+              label: 'Order Details',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.profile_circled),
+              label: 'Profile',
+            ),
           ],
           currentIndex: currentScreen,
           onTap: (value) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_color.dart';
-import 'package:hungry/features/auth/widget/custom_bouton_auth.dart';
+import 'package:hungry/features/auth/widget/custom_button_auth.dart';
 import 'package:hungry/shared/custom_text.dart';
 import 'package:hungry/shared/custom_textfield.dart';
 
@@ -70,7 +70,7 @@ class SignupView extends StatelessWidget {
                       }
                     },
 
-                    child: customButtonAuth(
+                    child: CustomButtonAuth(
                       text: 'Signup',
                       color: Colors.black,
                     ),
@@ -79,14 +79,14 @@ class SignupView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      custom_text(
-                        text: ' have an account? ',
+                      CustomText(
+                        text: 'Have an Account? ',
                         color: Colors.white,
                         weight: FontWeight.w400,
                       ),
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: custom_text(
+                        child: CustomText(
                           text: 'Login',
                           color: Colors.white,
                           size: 16,

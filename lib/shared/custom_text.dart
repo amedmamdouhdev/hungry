@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class custom_text extends StatelessWidget {
-  const custom_text({super.key, required this.text,  this.color,  this.size,  this.weight});
+class CustomText extends StatelessWidget {
+  const CustomText({
+    super.key,
+    required this.text,
+    this.color,
+    this.size,
+    this.weight,
+  });
   final String text;
   final Color? color;
   final double? size;
@@ -11,11 +17,7 @@ class custom_text extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
-        fontSize: size,
-        fontWeight: weight,
-        color: color,
-      ),
+      style: TextStyle(fontSize: size, fontWeight: weight, color: color),
     );
   }
 }
