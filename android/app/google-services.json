@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "466643890424",
+    "project_id": "chirty",
+    "storage_bucket": "chirty.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466643890424:android:a7692a8245b9a7d513cb0d",
+        "android_client_info": {
+          "package_name": "com.example.hungry"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbvdqrwS-sGoeXFohBLStZ5qi1ZF9x1pU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

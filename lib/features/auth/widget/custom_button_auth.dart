@@ -18,7 +18,7 @@ class CustomButtonAuth extends StatelessWidget {
       ),
       child: Center(
         child: CustomText(
-          text: "Login",
+          text: text,
           weight: FontWeight.bold,
           size: 20,
           color: Colors.black,

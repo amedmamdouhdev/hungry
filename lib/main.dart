@@ -1,13 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hungry/features/auth/views/login_view.dart';
-import 'package:hungry/features/auth/views/profile_view.dart';
-// import 'package:hungry/features/auth/views/login_view.dart';
-import 'package:hungry/features/auth/views/signup_view.dart';
-import 'package:hungry/root.dart';
+import 'package:hungry/firebase_options.dart';
+
 import 'package:hungry/splash.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 

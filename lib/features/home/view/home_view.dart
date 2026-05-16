@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hungry/core/constants/app_color.dart';
+import 'package:hungry/features/home/data/product_model.dart';
+import 'package:hungry/features/home/view/widget/product_item.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,32 +16,13 @@ class _HomeViewState extends State<HomeView> {
   final List<String> categories = ['All', 'Combos', 'Sliders', 'Classic'];
   int selectedCategory = 0;
 
-  final List<_FoodItem> products = const [
-    _FoodItem(
-      name: 'Cheeseburger',
-      description: "Wendy's Burger",
-      rating: 4.9,
-      imagePath: 'assets/burger/image 1.png',
-    ),
-    _FoodItem(
-      name: 'Hamburger',
-      description: 'Veggie Burger',
-      rating: 4.8,
-      imagePath: 'assets/burger/image 1.png',
-    ),
-    _FoodItem(
-      name: 'Hamburger',
-      description: 'Chicken Burger',
-      rating: 4.6,
-      imagePath: 'assets/burger/image 1.png',
-    ),
-    _FoodItem(
-      name: 'Hamburger',
-      description: 'Fried Chicken Burger',
-      rating: 4.5,
-      imagePath: 'assets/burger/image 1.png',
-    ),
-  ];
+  ProductModel product = ProductModel(
+    name: 'Cheese Burger',
+    description: 'Juicy grilled beef patty with cheese, lettuce, and tomato.',
+    rating: 4.5,
+    category: "Combos",
+    imagePath: 'assets/burger/image 1.png',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +143,7 @@ class _HomeViewState extends State<HomeView> {
               Expanded(
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: products.length,
+                  itemCount: 4,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 16.w,
@@ -168,8 +151,7 @@ class _HomeViewState extends State<HomeView> {
                     childAspectRatio: 0.72,
                   ),
                   itemBuilder: (context, index) {
-                    final item = products[index];
-                    return _buildFoodCard(item);
+                    return ProductItem(product: product);
                   },
                 ),
               ),
@@ -179,85 +161,4 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
-
-  Widget _buildFoodCard(_FoodItem item) {
-    return Container(
-      padding: EdgeInsets.all(14.r),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(28.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 18,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(24.r),
-                child: Image.asset(
-                  item.imagePath,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 14.h),
-          Text(
-            item.name,
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w700,
-              color: Colors.black87,
-            ),
-          ),
-          SizedBox(height: 6.h),
-          Text(
-            item.description,
-            style: TextStyle(
-              fontSize: 13.sp,
-              color: Colors.grey.shade600,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Row(
-            children: [
-              Icon(Icons.star, size: 16.r, color: const Color(0xFFFFA726)),
-              SizedBox(width: 6.w),
-              Text(
-                item.rating.toStringAsFixed(1),
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColor.primryColor,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _FoodItem {
-  const _FoodItem({
-    required this.name,
-    required this.description,
-    required this.rating,
-    required this.imagePath,
-  });
-
-  final String name;
-  final String description;
-  final double rating;
-  final String imagePath;
 }

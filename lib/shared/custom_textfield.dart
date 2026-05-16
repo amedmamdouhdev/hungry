@@ -37,7 +37,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'you should fill ${widget.hint}';
-      
         }
         return null;
       },
@@ -46,7 +45,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         suffixIcon: widget.isPasswrd
             ? GestureDetector(
                 onTap: _toggelPAssword,
-                child: Icon(Icons.remove_red_eye),
+                child: _obscureText
+                    ? Icon(Icons.visibility_off, color: Colors.grey)
+                    : Icon(Icons.visibility, color: Colors.grey),
               )
             : null,
         hint: Text(widget.hint),
