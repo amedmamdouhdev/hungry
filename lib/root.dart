@@ -4,7 +4,7 @@ import 'package:hungry/core/constants/app_color.dart';
 import 'package:hungry/features/auth/views/profile_view.dart';
 import 'package:hungry/features/cart/view/cart_view.dart';
 import 'package:hungry/features/home/view/home_view.dart';
-import 'package:hungry/features/orderDeteils/view/order_deteils.dart';
+import 'package:hungry/features/favourites/view/favourites_view.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -20,7 +20,7 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     super.initState();
-    screens = [HomeView(), CartView(), OrderDeteils(), ProfileView()];
+    screens = [HomeView(), CartView(), FavouritesView(), ProfileView()];
     controller = PageController(initialPage: currentScreen);
   }
 

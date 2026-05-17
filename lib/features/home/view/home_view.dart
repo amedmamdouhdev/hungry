@@ -16,13 +16,39 @@ class _HomeViewState extends State<HomeView> {
   final List<String> categories = ['All', 'Combos', 'Sliders', 'Classic'];
   int selectedCategory = 0;
 
-  ProductModel product = ProductModel(
-    name: 'Cheese Burger',
-    description: 'Juicy grilled beef patty with cheese, lettuce, and tomato.',
-    rating: 4.5,
-    category: "Combos",
-    imagePath: 'assets/burger/image 1.png',
-  );
+  List<ProductModel> products = [
+    ProductModel(
+      name: 'Cheese Burger',
+      description: 'Juicy grilled beef patty with cheese, lettuce, and tomato.',
+      rating: 4.5,
+      category: "Combos",
+      imagePath: 'assets/burger/image 1.png',
+    ),
+    ProductModel(
+      name: 'Chicken Slider',
+      description:
+          'Crispy chicken slider with mayo, pickles, and lettuce on a soft bun.',
+      rating: 4.2,
+      category: "Sliders",
+      imagePath: 'assets/burger/image 1.png',
+    ),
+    ProductModel(
+      name: 'Classic Burger',
+      description:
+          'Traditional beef burger with lettuce, tomato, onion, and special sauce.',
+      rating: 4.0,
+      category: "Classic",
+      imagePath: 'assets/burger/image 1.png',
+    ),
+    ProductModel(
+      name: 'Veggie Burger',
+      description:
+          'Delicious veggie patty with avocado, sprouts, and vegan mayo on a whole wheat bun.',
+      rating: 4.3,
+      category: "Combos",
+      imagePath: 'assets/burger/image 1.png',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +177,7 @@ class _HomeViewState extends State<HomeView> {
                     childAspectRatio: 0.72,
                   ),
                   itemBuilder: (context, index) {
-                    return ProductItem(product: product);
+                    return ProductItem(product: products[index]);
                   },
                 ),
               ),

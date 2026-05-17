@@ -12,6 +12,21 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
+  List<CartModel> cartItems = [
+    CartModel(
+      name: 'Hamburger',
+      description: 'Veggie Burger',
+      imagePath: 'assets/burger/image 1.png',
+      quantity: 2,
+    ),
+    CartModel(
+      name: 'Hamburger',
+      description: 'Veggie Burger',
+      imagePath: 'assets/burger/image 1.png',
+      quantity: 3,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,14 +42,7 @@ class _CartViewState extends State<CartView> {
                   itemCount: 2,
                   separatorBuilder: (_, __) => SizedBox(height: 16.h),
                   itemBuilder: (context, index) {
-                    return CartItem(
-                      item: CartModel(
-                        name: 'Hamburger',
-                        description: 'Veggie Burger',
-                        imagePath: 'assets/burger/image 1.png',
-                        quantity: 2,
-                      ),
-                    );
+                    return CartItem(item: cartItems[index]);
                   },
                 ),
               ),
